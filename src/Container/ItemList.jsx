@@ -2,11 +2,11 @@ import Item from "./Item";
 
 export const ItemList = ({ items }) => {
   return (
-    <div className="col-md-10 d-flex flex-row">
+    <div className="justify-center d-flex">
       {items.map((element) => {
         return (
-          <div key = {element.id}>
-            <Item item = {element} />
+          <div key={element.id}>
+            <Item item={element} />
           </div>
         );
       })}
