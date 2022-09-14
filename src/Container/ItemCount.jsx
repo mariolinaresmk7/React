@@ -1,23 +1,26 @@
 import Button from "react-bootstrap/Button";
-import { useState } from "react";
 
-const ItemCount = ({ initial, stock, onAdd }) => {
-  const [cart, setCart] = useState(initial);
-  const add = () => {
-    cart < stock && setCart(cart + 1);
+
+const ItemCount = ({ stock, counter, setCounter, onAdd}) => {
+ 
+  const add = (e) => {
+    e.preventDefault();
+    counter < stock && setCounter(counter + 1);
   };
-  const subtract = () => {
-    setCart(cart - 1);
+  const subtract = (e) => {
+    e.preventDefault();
+    setCounter(counter - 1);
   };
-  const reset = () => {
-    setCart(1);
+  const reset = (e) => {
+    e.preventDefault();
+    setCounter(1);
   };
 
   return (
     <>
       <div>
-        <p>Cantidad: {cart}</p>
-        <button disabled={cart <= 1} onClick={subtract}>
+        <p>Cantidad: {counter}</p>
+        <button disabled={counter <= 1} onClick={subtract}>
           <span style={{ fontSize: "38px" }}>
             <i class="ri-subtract-line"></i>
           </span>
@@ -34,11 +37,11 @@ const ItemCount = ({ initial, stock, onAdd }) => {
         </button>
       </div>
       <Button
-        onClick={() => onAdd(cart)}
+       onClick={() => onAdd(counter)}
         disabled={stock == 0}
         variant="success"
       >
-        Agregar al Carrito
+        Añadir al Carrito
       </Button>
     </>
   );

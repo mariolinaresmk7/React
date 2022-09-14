@@ -9,10 +9,10 @@ const style = {
 };
 
 function Item({ item }) {
-  const onAdd = (cant) => {
-    console.log(`cantidad agragada al carrito: ${cant}`);
-    alert(`Cantidad agragada al carrito: ${cant}`);
-  };
+  // const onAdd = (cant) => {
+  //   console.log(`cantidad agragada al carrito: ${cant}`);
+  //   alert(`Cantidad agragada al carrito: ${cant}`);
+  // };
 
   return (
     <div>
@@ -33,7 +33,7 @@ function Item({ item }) {
               Ver mas
             </Link>
           </Button>
-          <ItemCount initial={1} stock={9} onAdd={onAdd} />
+          {/* <ItemCount initial={1} stock={9} onAdd={onAdd} /> */}
         </Card.Body>
       </Card>
     </div>
