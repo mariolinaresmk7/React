@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ItemList } from "./ItemList";
@@ -11,6 +12,8 @@ const style = {
   textAlign: "center",
   fontSize:"20px"
 };
+
+
 const ItemListContainer = (props) => {
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);

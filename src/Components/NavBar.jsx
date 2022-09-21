@@ -5,7 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link, NavLink, useParams } from "react-router-dom";
 import "../App.css";
-import { useEffect, useState } from "react";
+
 
 const styleNav = {
   textDecoration: "none",
@@ -17,13 +17,13 @@ const NavBar = () => {
     <header className="container-fluid header">
       <div className="row d-flex align-items-center justify-content-around container2">
         <p className="icon-title col-md-3 offset-1">
-          <NavLink
+          <Link
             to="/"
             className="span-title"
             style={{ textDecoration: "none", color: "#F4F6F7" }}
           >
             H2 <span>gamers</span>
-          </NavLink>
+          </Link>
         </p>
         <div className="col-md-4">
           <div className="container-fluid">
@@ -49,7 +49,7 @@ const NavBar = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/">Inicio</Nav.Link>
+              <Link to={"/"} style={{textDecoration: "none"}}>Inicio</Link>
               <NavDropdown title="Categorias" id="basic-nav-dropdown">
                 <NavDropdown.Item>
                   <Link to={"/productos/procesadores"} style={styleNav}>
