@@ -25,14 +25,19 @@ function Item({ item }) {
         <Card.Body>
           <Card.Title>{item.title}</Card.Title>
           <Card.Text>$ {item.price} </Card.Text>
-          <Button variant="info">
-            <Link
-              to={`/item/${item.id}`}
-              style={{ color: "white", textDecoration: "none" }}
-            >
-              Ver mas
-            </Link>
-          </Button>
+          {item.available_quantity > 0 ? (
+            <Button variant="info">
+              <Link
+                to={`/item/${item.id}`}
+                style={{ color: "white", textDecoration: "none" }}
+              >
+                Ver mas
+              </Link>
+            </Button>
+          ) : (
+            <p className="btn btn-outline-danger">No hay stock</p>
+          )}
+
           {/* <ItemCount initial={1} stock={9} onAdd={onAdd} /> */}
         </Card.Body>
       </Card>

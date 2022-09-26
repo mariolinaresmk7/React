@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { CartContext } from "../Context/CartContext";
 
 const ItemDetail = ({ item }) => {
-  const [cantidad, setCantidad] = useState(1);
+  const [cantidad, setCantidad] = useState(0);
   const { cart, addToCart, isInCart } = useContext( CartContext )
   console.log(cart)
   const onAdd = () => {
@@ -44,7 +44,8 @@ const ItemDetail = ({ item }) => {
           <div className="mt-4 lg:row-span-3 lg:mt-0">
             <h2 className="sr-only">Product information</h2>
             <p className="text-3xl tracking-tight text-gray-900">
-              $ {item.price}
+             
+              Cantidad disponible: {item.available_quantity} --  $ {item.price}
             </p>
             <form className="mt-10">
               {isInCart(item.id)? 

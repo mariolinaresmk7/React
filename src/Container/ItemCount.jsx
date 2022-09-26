@@ -2,11 +2,11 @@ import Button from "react-bootstrap/Button";
 
 
 const ItemCount = ({ stock, counter, setCounter, onAdd}) => {
- 
-  const add = (e) => {
-    e.preventDefault();
-    counter < stock && setCounter(counter + 1);
-  };
+  
+    const add = (e) => {
+      e.preventDefault();
+      counter < stock && setCounter(counter + 1);
+    };
   const subtract = (e) => {
     e.preventDefault();
     setCounter(counter - 1);
@@ -20,7 +20,7 @@ const ItemCount = ({ stock, counter, setCounter, onAdd}) => {
     <>
       <div>
         <p>Cantidad: {counter}</p>
-        <button disabled={counter <= 1} onClick={subtract}>
+        <button disabled={counter === 0} onClick={subtract}>
           <span style={{ fontSize: "38px" }}>
             <i class="ri-subtract-line"></i>
           </span>
@@ -30,7 +30,7 @@ const ItemCount = ({ stock, counter, setCounter, onAdd}) => {
             <i class="ri-restart-line"></i>
           </span>
         </button>
-        <button onClick={add}>
+        <button disabled={counter === stock} onClick={add}>
           <span style={{ fontSize: "38px" }}>
             <i className="ri-add-circle-line"></i>
           </span>
@@ -38,7 +38,7 @@ const ItemCount = ({ stock, counter, setCounter, onAdd}) => {
       </div>
       <Button
        onClick={() => onAdd(counter)}
-        disabled={stock == 0}
+        disabled={counter === 0}
         variant="success"
       >
         Añadir al Carrito

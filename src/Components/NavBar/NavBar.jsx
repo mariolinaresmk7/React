@@ -1,11 +1,10 @@
-import CartWidget from "./CartWidget";
+import CartWidget from "../CartWidget";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link, NavLink, useParams } from "react-router-dom";
-import "../App.css";
-
+import "./NavBar.css";
 
 const styleNav = {
   textDecoration: "none",
@@ -14,7 +13,7 @@ const styleNav = {
 
 const NavBar = () => {
   return (
-    <header className="container-fluid header">
+    <header className="container-fluid header g-0">
       <div className="row d-flex align-items-center justify-content-around container2">
         <p className="icon-title col-md-3 offset-1">
           <Link
@@ -39,7 +38,7 @@ const NavBar = () => {
           </div>
         </div>
       </div>
-      <Navbar
+       <Navbar
         expand="lg"
         bg="dark"
         variant="dark"
@@ -49,7 +48,9 @@ const NavBar = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Link to={"/"} style={{textDecoration: "none"}}>Inicio</Link>
+              <Link to={"/"} style={{ textDecoration: "none" }}>
+                Inicio
+              </Link>
               <NavDropdown title="Categorias" id="basic-nav-dropdown">
                 <NavDropdown.Item>
                   <Link to={"/productos/procesadores"} style={styleNav}>
@@ -89,7 +90,7 @@ const NavBar = () => {
           </Navbar.Collapse>
         </Container>
         <CartWidget />
-      </Navbar>
+      </Navbar> 
     </header>
   );
 };

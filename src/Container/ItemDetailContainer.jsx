@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import Loader from "../Components/Loader/Loader";
 import ItemDetail from "./ItemDetail";
 
 const ItemDetailContainer = () => {
@@ -27,6 +28,6 @@ const ItemDetailContainer = () => {
   useEffect(() => {
     getItem();
   }, []);
-  return <>{loading ? <h3>Loading</h3> : <ItemDetail item={product} />}</>;
+  return <>{loading ? <Loader/> : <ItemDetail item={product} />}</>;
 };
 export default ItemDetailContainer;

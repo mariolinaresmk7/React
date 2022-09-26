@@ -1,19 +1,7 @@
 .App {
-  background: #0f2027;
+  /* background: #0f2027;
   background: -webkit-linear-gradient(to top, #2c5364, #203a43, #0f2027);
   background: linear-gradient(to top, #2c5364, #203a43, #0f2027);
-  min-height: 100vh;
-  font-family:  "Lexend Exa, sans-serif" !important
-}
-
-.icon-title{
-    font-size: 70px;
-    font-family: "Rock Salt", cursive;
-    cursor: pointer;
-    color:#F4F6F7 
-}
-.span-title > span{
-    color: #d7415d;
-    font-size: 25px;
-    font-family: "Gloria Hallelujah", cursive;
+  min-height: 100vh; */
+background-color: whitesmoke;
 }

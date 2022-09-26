@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Loader from "../Components/Loader/Loader";
 import { ItemList } from "./ItemList";
 
 const style = {
@@ -57,7 +58,7 @@ const ItemListContainer = (props) => {
   return (
     <div className="container">
       <h6 style={style}>{props.greeting}</h6>
-      {loading ? <h3 style={{textAlign: 'center',color: 'white', fontFamily:'Lexend Exa, sans-serif'}}>Loading...</h3> : <ItemList items={product} />}
+      {loading ? <Loader/> : <ItemList items={product} />}
     </div>
   );
 };

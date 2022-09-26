@@ -4,11 +4,13 @@ export const ItemList = ({ items }) => {
   return (
     <div className="justify-center d-flex">
       {items.map((element) => {
-        return (
-          <div key={element.id}>
-            <Item item={element} />
-          </div>
-        );
+        if (element.available_quantity > 0) {
+          return (
+            <div>
+              <Item item={element} key={element.id} />
+            </div>
+          );
+        } else { return null }
       })}
     </div>
   );

@@ -1,31 +1,27 @@
 import { useContext } from "react";
-import ItemCount from "../Container/ItemCount";
+import { Link } from "react-router-dom";
 import { CartContext } from "../Context/CartContext";
+import { ItemCart } from "./ItemCart";
 const style = {
   fontFamily: "Lexend Exa, sans-serif",
   color: "white",
 };
 
 export const Cart = () => {
-  const { cart, clearCart, totalPriceCart, removeItemCart } =
+  const { cart, clearCart, totalPriceCart} =
     useContext(CartContext);
-
+if ( cart.length === 0) {
+  return <> <h2>Tu carrito esta vacio</h2>
+  <button className="btn btn-secondary"><Link to={"/"} style={{textDecoration:"none"}}>Volver a Comprar</Link></button></>
+}
   return (
-    <>
+    <div style={{backgroundColor:"gray", height:"100vh"}}>
       <h2 style={style}>Carrito De Compras</h2>
       <hr />
-
       {cart.map((item) => (
-        <div className="row" style={style} key={item.id}>
-          <h2 className="col-lg-4">{item.nombre}</h2>
-          <h3 className="col-lg-4">Precio: ${item.precio}</h3>
-          <h3>Cantidad: {item.cantidad}</h3>
-          <i
-            onClick={() => removeItemCart(item.id)}
-            className="text-4xl cursor-pointer col-lg-2 text-rose-700 ri-delete-bin-line"
-          ></i>
-        </div>
+        <ItemCart item={item}/>
       ))}
+      
       {totalPriceCart() ? (
         <>
           <h3 style={style}>Total: {totalPriceCart()} </h3>{" "}
@@ -34,6 +30,6 @@ export const Cart = () => {
           </button>
         </>
       ) : null}
-    </>
+    </div>
   );
 };
