@@ -6,14 +6,7 @@ const style = {
 };
 
 export const ItemCart = ({item}) => {
-  const { cart ,setCart ,removeItemCart, addToCart } = useContext(CartContext);
-
-  const add = (e) => {
-    e.preventDefault();
-    item.cantidad < item.stock && setCart(item.cantidad + 1);
-  };
-  
-  
+  const {  removeItemCart } = useContext(CartContext);
   return (
     <div className="row" style={style} key={item.id}>
       <h2 className="col-lg-4">{item.nombre}</h2>

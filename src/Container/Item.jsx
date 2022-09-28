@@ -23,9 +23,10 @@ function Item({ item }) {
           style={{ backgroundSize: "cover" }}
         />
         <Card.Body>
-          <Card.Title>{item.title}</Card.Title>
-          <Card.Text>$ {item.price} </Card.Text>
-          {item.available_quantity > 0 ? (
+          <Card.Title>{item.nombre}</Card.Title>
+          <Card.Text>$ {item.precio} </Card.Text>
+          <Card.Text>Cantidad Disponible: {item.stock} </Card.Text>
+          {item.stock > 0 ? (
             <Button variant="info">
               <Link
                 to={`/item/${item.id}`}

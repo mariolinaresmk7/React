@@ -3,31 +3,27 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Loader from "../Components/Loader/Loader";
 import ItemDetail from "./ItemDetail";
+import { db } from "../Firebase/Config";
+import { doc, getDoc } from "firebase/firestore";
 
 const ItemDetailContainer = () => {
   const [product, setProducto] = useState([]);
   const [loading, setLoading] = useState(true);
   const { itemsId } = useParams();
   console.log(itemsId);
-  const getItem = async () => {
-    setLoading(true);
-    try {
-      const response = await fetch(
-        `https://api.mercadolibre.com/items/${itemsId}`
-      );
-      const data = await response.json();
-      setProducto(data);
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
-    getItem();
+    setLoading(true);
+    const itemRef = doc(db, "productos", itemsId);
+    getDoc(itemRef)
+      .then((resp) => {
+        const itemDB = { id: resp.id, ...resp.data() };
+        console.log(itemDB);
+        setProducto(itemDB);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
-  return <>{loading ? <Loader/> : <ItemDetail item={product} />}</>;
+  return <>{loading ? <Loader /> : <ItemDetail item={product} />}</>;
 };
 export default ItemDetailContainer;
