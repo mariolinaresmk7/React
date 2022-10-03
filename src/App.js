@@ -1,6 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Cart } from "./Components/Cart";
+import CheckOut from "./Components/CheckOut/CheckOut";
 import NavBar from "./Components/NavBar/NavBar";
 import ItemDetailContainer from "./Container/ItemDetailContainer";
 import ItemListContainer from "./Container/ItemListContainer";
@@ -23,6 +24,7 @@ function App() {
             />
             <Route path="/item/:itemsId" element={<ItemDetailContainer />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<CheckOut/>} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </BrowserRouter>

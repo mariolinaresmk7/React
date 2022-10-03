@@ -28,6 +28,7 @@ if ( cart.length === 0) {
           <button style={style} className="ml-10 btn btn-danger" onClick={clearCart}>
             Limpiar Carrito{" "}
           </button>
+          <Link to={"/checkout"} className="mx-3 btn btn-success">Comprar</Link>
         </>
       ) : null}
     </div>
