@@ -1,43 +1,42 @@
 import Button from "react-bootstrap/Button";
+import "./ItemCount.css"
 
-
-const ItemCount = ({ stock, counter, setCounter, onAdd}) => {
-  
-    const add = (e) => {
-      e.preventDefault();
-      counter < stock && setCounter(counter + 1);
-    };
+const ItemCount = ({ stock, counter, setCounter, onAdd }) => {
+  const add = (e) => {
+    e.preventDefault();
+    counter < stock && setCounter(counter + 1);
+  };
   const subtract = (e) => {
     e.preventDefault();
     setCounter(counter - 1);
   };
   const reset = (e) => {
     e.preventDefault();
-    setCounter(1);
+    setCounter(0);
   };
 
   return (
     <>
-      <div>
+      <div className="mb-2">
         <p>Cantidad: {counter}</p>
         <button disabled={counter === 0} onClick={subtract}>
-          <span style={{ fontSize: "38px" }}>
-            <i class="ri-subtract-line"></i>
+          <span className="span">
+            <i className="ri-subtract-line"></i>
           </span>
         </button>
         <button onClick={reset}>
-          <span style={{ fontSize: "38px" }}>
-            <i class="ri-restart-line"></i>
+          <span className="span">
+            <i className="ri-restart-line"></i>
           </span>
         </button>
         <button disabled={counter === stock} onClick={add}>
-          <span style={{ fontSize: "38px" }}>
+          <span className="span">
             <i className="ri-add-circle-line"></i>
           </span>
         </button>
       </div>
       <Button
-       onClick={() => onAdd(counter)}
+        onClick={() => onAdd(counter)}
         disabled={counter === 0}
         variant="success"
       >

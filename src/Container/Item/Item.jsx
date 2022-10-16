@@ -1,36 +1,26 @@
 import { Button } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
-import ItemCount from "./ItemCount";
-const style = {
-  width: "14rem",
-  fontFamily: "Lexend Exa, sans-serif",
-  fontSize: "12px",
-};
+import "./Item.css"
 
 function Item({ item }) {
-  // const onAdd = (cant) => {
-  //   console.log(`cantidad agragada al carrito: ${cant}`);
-  //   alert(`Cantidad agragada al carrito: ${cant}`);
-  // };
-
   return (
     <div>
-      <Card style={style}>
+      <Card className="card">
         <Card.Img
           variant="top"
-          src={item.thumbnail}
-          style={{ backgroundSize: "cover" }}
+          src={item.img}
+          style={{ overflow: "hidden"}}
         />
         <Card.Body>
           <Card.Title>{item.nombre}</Card.Title>
-          <Card.Text>$ {item.precio} </Card.Text>
-          <Card.Text>Cantidad Disponible: {item.stock} </Card.Text>
+          {/* <Card.Text>$ {item.precio} </Card.Text>
+          <Card.Text>Cantidad Disponible: {item.stock} </Card.Text> */}
           {item.stock > 0 ? (
             <Button variant="info">
               <Link
                 to={`/item/${item.id}`}
-                style={{ color: "white", textDecoration: "none" }}
+                className="link"
               >
                 Ver mas
               </Link>
@@ -38,8 +28,6 @@ function Item({ item }) {
           ) : (
             <p className="btn btn-outline-danger">No hay stock</p>
           )}
-
-          {/* <ItemCount initial={1} stock={9} onAdd={onAdd} /> */}
         </Card.Body>
       </Card>
     </div>

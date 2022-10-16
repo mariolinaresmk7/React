@@ -1,7 +1,10 @@
 .App {
-  /* background: #0f2027;
-  background: -webkit-linear-gradient(to top, #2c5364, #203a43, #0f2027);
-  background: linear-gradient(to top, #2c5364, #203a43, #0f2027);
-  min-height: 100vh; */
-background-color: whitesmoke;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    background-image: url(/public/newegg-tech-pc-hardware-wallpaper-1-scaled.jpg);
+    font-family:  "Lexend Exa" ;
+    position: relative;
 }

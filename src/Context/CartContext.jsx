@@ -27,9 +27,7 @@ export const CartProvider = ({ children }) => {
     setCart(cart.filter((item) => item.id !== id));
     console.log("remove");
   };
-  // const addItem = (item, stock) => {
-  //   item.stock 
-  // }
+  
   return (
     <CartContext.Provider
       value={{

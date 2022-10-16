@@ -1,28 +1,24 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Loader from "../Components/Loader/Loader";
-import { ItemList } from "./ItemList";
-import { db } from "../Firebase/Config";
-import { collection, getDocs, query, where } from "firebase/firestore";
-
-const style = {
-  //backgroundColor: "#1d1e22",
-  color: "white",
-  marginTop: "20px",
-  height: "40px",
-  fontFamily: "Lexend Exa, sans-serif",
-  textAlign: "center",
-  fontSize: "20px",
-};
+import Loader from "../../Components/Loader/Loader";
+import { ItemList } from "../ItemList/ItemList";
+import { db } from "../../Firebase/Config";
+import { collection, getDocs, limit, query, where } from "firebase/firestore";
+import "./ItemListContainer.css"
 
 const ItemListContainer = (props) => {
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [pag, setPag] = useState(4)
   const { categoryId } = useParams();
-  console.log(categoryId);
+ 
+  const seeMore = (e) => {
+    e.preventDefault();
+    setPag(pag + 4);
+  }
   useEffect(() => {
     setLoading(true);
-    const productRef = collection(db, "productos");
+    const productRef = query(collection(db, "productos"), limit(pag)) 
     const q = categoryId
       ? query(productRef, where("categoria", "==", categoryId))
       : productRef;
@@ -32,18 +28,17 @@ const ItemListContainer = (props) => {
           id: doc.id,
           ...doc.data(),
         }));
-        console.log(productosDB);
         setProduct(productosDB);
       })
       .finally(() => {
         setLoading(false);
       });
-  }, [categoryId]);
-
+      
+  }, [categoryId, pag]);
   return (
-    <div className="container">
-      <h6 style={style}>{props.greeting}</h6>
-      {loading ? <Loader /> : <ItemList items={product} />}
+    <div className="container itemList" id="shop">
+      {categoryId? <h3 className="titulos">{categoryId.toUpperCase()}</h3> : <h3 className="titulos">{props.greeting}</h3> }
+      {loading ? <Loader /> : <ItemList items={product} seeMore={seeMore} />}
     </div>
   );
 };

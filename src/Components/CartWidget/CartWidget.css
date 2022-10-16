@@ -1,0 +1,12 @@
+.link {
+  text-decoration: none;
+}
+span {
+  cursor: pointer;
+  font-size: 12px;
+  font-family: "Lexend Exa";
+  color: white;
+}
+i{
+  color: white;
+}
