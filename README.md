@@ -8,6 +8,13 @@ _El proyecto consiste en un e-commerce en una aplicacion SPA. Dentro de la aplic
 tipo de productos (para ver su informacion en detalle), agregarlos al carrito de compras para luego poder finalizar la misma, completando los datos de la orden de 
 compra (nombre y apellido, email, direccion)._
 
+## _Instalar_ 🔧
+
+_Para clonar este repositorio debes ingresar el siguiente comando en la consola_
+
+```
+git clone "https://github.com/mariolinaresmk7/React.git"
+```
 
 ## _Ejecutar con `npm start`_ 🚀
 _Ejecuta la aplicación en el modo de desarrollo._
