@@ -5,3 +5,6 @@
 .link:hover{
 	color:white
 }
+.cont{
+  min-height: 80vh;
+}

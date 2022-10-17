@@ -1,9 +1,8 @@
 import Item from "../Item/Item";
-import "./ItemList.css"
 export const ItemList = ({ items, seeMore }) => {
   return (
     <>
-    <div className="flex-wrap d-flex item-card justify-content-center" id="categoria">
+    <div className="flex-wrap d-flex item-card justify-content-center">
       {items.map((element) => {
           return (
             <div >

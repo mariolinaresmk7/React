@@ -3,11 +3,6 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../../Context/CartContext";
 import { ItemCart } from "../ItemCart/ItemCart";
 import "./Cart.css";
-const style = {
-  fontFamily: "Lexend Exa, sans-serif",
-  color: "white",
-};
-
 export const Cart = () => {
   const { cart, clearCart, totalPriceCart } = useContext(CartContext);
   if (cart.length === 0) {
@@ -31,11 +26,7 @@ export const Cart = () => {
         <div className="row">
           <h3 className="col-lg-2 offset-10">Total: {totalPriceCart()} </h3>
           <div className="col-lg-4 offset-4 d-flex justify-content-center">
-            <button
-              style={style}
-              className="btn btn-danger col-lg-8"
-              onClick={clearCart}
-            >
+            <button className="btn btn-danger col-lg-8" onClick={clearCart}>
               Limpiar Carrito
             </button>
             <Link to={"/checkout"} className="mx-2 btn btn-success col-lg-8">

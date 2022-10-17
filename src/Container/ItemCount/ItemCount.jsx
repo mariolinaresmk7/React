@@ -1,5 +1,5 @@
 import Button from "react-bootstrap/Button";
-import "./ItemCount.css"
+import "./ItemCount.css";
 
 const ItemCount = ({ stock, counter, setCounter, onAdd }) => {
   const add = (e) => {
@@ -14,7 +14,6 @@ const ItemCount = ({ stock, counter, setCounter, onAdd }) => {
     e.preventDefault();
     setCounter(0);
   };
-
   return (
     <>
       <div className="mb-2">
@@ -45,5 +44,4 @@ const ItemCount = ({ stock, counter, setCounter, onAdd }) => {
     </>
   );
 };
-
 export default ItemCount;

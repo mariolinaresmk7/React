@@ -27,10 +27,9 @@ const NavBar = () => {
                 Categorias
                 <ul className="d-flex align-items-center flex-column subMenu">
                   <li>
-                    <Link  to={"/productos/procesadores"} className="link">
+                    <Link to={"/productos/procesadores"} className="link">
                       Procesadores
                     </Link>
-                    
                   </li>
                   <li>
                     <Link to={"/productos/monitores"} className="link">
@@ -69,7 +68,6 @@ const NavBar = () => {
                   </li>
                 </ul>
               </li>
-             
             </ul>
           </nav>
           <CartWidget />

@@ -4,8 +4,7 @@ import { Cart } from "./Components/Carts/Cart";
 import CheckOut from "./Components/CheckOut/CheckOut";
 import Footer from "./Components/Footer/Footer";
 import NavBar from "./Components/NavBar/NavBar";
-import Ofertas from "./Components/Ofertas/Ofertas";
-import ItemDetailContainer from "./Container/ItemDetailContainer";
+import ItemDetailContainer from "./Container/ItemDetailContainer/ItemDetailContainer";
 import ItemListContainer from "./Container/ItemListContainer/ItemListContainer";
 import { CartProvider } from "./Context/CartContext";
 
@@ -26,15 +25,10 @@ function App() {
               path="/productos/:categoryId"
               element={<ItemListContainer />}
             />
-              <Route
-              path="/ofertas"
-              element={<Ofertas/>}
-            />  
             <Route path="/item/:itemsId" element={<ItemDetailContainer />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<CheckOut />} />
             <Route path="*" element={<Navigate to="/" />} />
-
           </Routes>
           <Footer />
         </BrowserRouter>
@@ -42,5 +36,4 @@ function App() {
     </div>
   );
 }
-
 export default App;

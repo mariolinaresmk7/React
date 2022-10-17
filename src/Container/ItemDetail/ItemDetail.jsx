@@ -8,8 +8,7 @@ import "./ItemDetail.css";
 
 const ItemDetail = ({ item }) => {
   const [cantidad, setCantidad] = useState(0);
-  const { cart, addToCart, isInCart } = useContext(CartContext);
-  console.log(cart);
+  const { addToCart, isInCart } = useContext(CartContext);
   const onAdd = () => {
     const itemToCart = {
       id: item.id,
@@ -22,13 +21,13 @@ const ItemDetail = ({ item }) => {
     addToCart(itemToCart);
     alert(`Su producto fue agregado con exito al carrito`);
   };
-
   return (
-    <div className="bg-white">
+    <div className="bg-white cont">
       <div className="pt-6">
         <div className="max-w-2xl mx-auto mt-6 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-4 lg:gap-x-8 lg:px-8">
-          <div className="hidden overflow-hidden rounded-lg aspect-w-3 aspect-h-4 lg:block"><img src={item.img} /></div>
-          
+          <div className="hidden overflow-hidden rounded-lg aspect-w-3 aspect-h-4 lg:block">
+            <img src={item.img} />
+          </div>
         </div>
         <div className="mx-auto max-w-2xl px-4 pt-10 pb-16 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pt-16 lg:pb-24">
           <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
@@ -66,14 +65,6 @@ const ItemDetail = ({ item }) => {
                 />
               )}
             </form>
-          </div>
-          <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pt-6 lg:pb-16 lg:pr-8">
-            <div>
-              <h3 className="sr-only">Descripcion</h3>
-              <div className="space-y-6">
-                <p className="text-base text-gray-900">{item.description}</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
