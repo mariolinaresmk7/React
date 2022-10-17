@@ -3,9 +3,19 @@ import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { CartContext } from "../../Context/CartContext";
 import { db } from "../../Firebase/Config";
-import { collection, addDoc, doc, updateDoc, getDoc } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  writeBatch,
+  query,
+  where,
+  documentId,
+  getDocs,
+} from "firebase/firestore";
 import "./CheckOut.css";
+
 const CheckOut = () => {
+  const [stock, setStock] = useState(null)
   const [orderID, setOrderID] = useState(null);
   const [input, setInput] = useState({
     nombre: "",
@@ -19,7 +29,8 @@ const CheckOut = () => {
       [e.target.name]: e.target.value,
     });
   };
-  const handlerSubmit = (e) => {
+
+  const handlerSubmit = async (e) => {
     e.preventDefault();
     const order = {
       comprador: { ...input },
@@ -39,18 +50,45 @@ const CheckOut = () => {
       alert("Direccion incorrect");
       return;
     }
-    cart.forEach((items) => {
-      const docRef = doc(db, "productos", items.id);
-      getDoc(docRef).then((respuesta) => {
-        updateDoc(docRef, { stock: respuesta.data().stock - items.cantidad });
-      });
-    });
+
+    const batch = writeBatch(db);
     const orderRef = collection(db, "ordenes");
-    addDoc(orderRef, order).then((doc) => {
-      setOrderID(doc.id);
-      setCart([]);
+    const productosRef = collection(db, "productos");
+    const q = query(
+      productosRef,
+      where(
+        documentId(),
+        "in",
+        cart.map((item) => item.id)
+      )
+    );
+    const productos = await getDocs(q);
+    const outOfStock = [];
+    productos.docs.forEach((doc) => {
+      const itemsInCart = cart.find((item) => item.id === doc.id);
+      if (doc.data().stock >= itemsInCart.cantidad) {
+        batch.update(doc.ref, {
+          stock: doc.data().stock - itemsInCart.cantidad,
+        });
+      } else {
+        outOfStock.push(itemsInCart);
+      }
     });
+    if (outOfStock.length === 0) {
+      batch.commit().then(() => {
+        addDoc(orderRef, order).then((doc) => {
+          setOrderID(doc.id);
+          setCart([]);
+        });
+      });
+    } else {
+      alert(
+        `No hay stock del producto ${outOfStock.map((item) => item.nombre)}`
+      );
+      setCart([]);
+    }
   };
+  
   if (orderID) {
     return (
       <div className="my-5 orderContainer">
@@ -67,7 +105,6 @@ const CheckOut = () => {
       </div>
     );
   }
-
   if (cart.length === 0) {
     return <Navigate to={"/"} />;
   }
